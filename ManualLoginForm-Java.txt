@@ -1,0 +1,83 @@
+
+package loginmanual;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+
+public class LoginManual implements ActionListener {
+
+    private static JTextField usertxt;
+    private static JPasswordField ptxt;
+    private static JFrame frame;
+    private static JPanel panel;
+ 
+    public static void main(String[] args) {
+        // TODO code application logic here
+          frame = new JFrame();
+          panel = new JPanel();
+
+          frame.setSize(300, 200);
+          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          frame.setBounds(550, 250, 300, 150);
+          frame.add(panel);
+          
+          panel.setLayout(null);
+          
+           JLabel label1 = new JLabel("Username:");
+           label1.setBounds(10, 20, 90, 25);
+           panel.add(label1);
+           
+           JLabel label2 = new JLabel("Password:");
+           label2.setBounds(10, 50, 90, 35);
+           panel.add(label2);
+           
+           usertxt = new JTextField(20);
+           usertxt.setBounds(80, 20, 165, 25);
+           panel.add(usertxt);
+           
+           ptxt = new JPasswordField(50);
+           ptxt.setBounds(80, 50, 165, 25);
+           panel.add(ptxt);
+           
+           JButton bott = new JButton("Login");
+           bott.setBounds(120, 80, 80, 25);
+           bott.addActionListener(new LoginManual());
+           panel.add(bott);
+
+           frame.setVisible(true);
+           
+          
+           
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+          
+          String user = usertxt.getText();
+          String pass = ptxt.getText();
+          
+          JFrame loginframe = new JFrame();
+          JPanel loginpanel = new JPanel();
+
+          loginframe.setBounds(500, 250, 400, 200);
+          loginframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          loginframe.add(loginpanel);
+          
+          
+          JLabel Success = new JLabel("Success");
+          Success.setBounds(120, 110, 300, 25);
+          loginpanel.add(Success);
+          
+          if(user.equals("user") && pass.equals("pass")){
+              JOptionPane.showMessageDialog(null, "success");
+              loginframe.setVisible(true);
+              frame.dispose();
+          }else{
+              JOptionPane.showMessageDialog(null, "incorrect");
+          }
+          
+    }
+    
+}
